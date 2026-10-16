@@ -1,0 +1,85 @@
+{
+  "_db_storage": "/data/wechat/xwechat_files/wxid_s2eixh6namgj22_b834/db_storage",
+  "_resolved": 20,
+  "_total": 20,
+  "chatbot/chatbot_message.db": {
+    "enc_key": "71ea4b15392456b2ca9a5ff8fb443679f4cae202d6bd7418e5a2aa85d8ff21c9",
+    "salt": "382c150415013ac91de854b940e8f9e5"
+  },
+  "message/message_resource.db": {
+    "enc_key": "3918d9f64144bf7bec914c275de0ce82e980313d6fc35aaac648afe5f3f11e84",
+    "salt": "2b675c8548274bd1146ed80a61c174b3"
+  },
+  "message/biz_message_0.db": {
+    "enc_key": "dc18d96117364a2bacc70a12b2591379391a15abf36f70c1e6f1a5441d6c459e",
+    "salt": "d7fc617b3c7c8a2ef6832b026bf290ec"
+  },
+  "message/weclaw.db": {
+    "enc_key": "cfdb7edd2e2d5f0943d95016586f29c22f0c2fa32ad3093ca00222889ff5b8bb",
+    "salt": "b7618de43ef07acc193915137e6c8eb5"
+  },
+  "message/message_0.db": {
+    "enc_key": "eb83dc00383e6d889170681514b5085e7de045cf729456d8d007d27fc8c08f08",
+    "salt": "749ec09e6579a796a4e046e0011cd008"
+  },
+  "message/message_fts.db": {
+    "enc_key": "b3d85bcc72bdfece91d26350e99645062c0d957792e08ab6ff8090d622688d51",
+    "salt": "b330a56a8dcd38b9bb04ad4dea209798"
+  },
+  "message/media_0.db": {
+    "enc_key": "7e95df8a097cd003816b6da3968e94e30be28afe2461b2dd344c79e507630e6e",
+    "salt": "7f1b4c24d2b2a2a3c6d0e68050f98a63"
+  },
+  "emoticon/emoticon.db": {
+    "enc_key": "c45fea358736d9a886a1726af6160e3511661b0bb228d7ca661cc41d2b041807",
+    "salt": "cddd76a06623f3cb4eaf2f01040a4385"
+  },
+  "hardlink/hardlink.db": {
+    "enc_key": "3efca048bc87ddc728db1d1dbd63bb69ce4f9512edeb85ec82f42d04a2c582af",
+    "salt": "7a4540a0d255049b7104c050ace2f7d1"
+  },
+  "bizchat/bizchat.db": {
+    "enc_key": "83523ab7d2ade6a46a2df2d0292f2c1965bedd4561582f5bf35302d0d796905d",
+    "salt": "cdeb9aae137bd3bf871cd7d0f108fd4c"
+  },
+  "session/session.db": {
+    "enc_key": "a76eb70706ccfd8e6960897bf0e855d70a3828faad40b624240bc36b75fabbbe",
+    "salt": "a4df408cc94f5e0800d0ca81e2cbb2ab"
+  },
+  "contact/contact_fts.db": {
+    "enc_key": "ecf1d39fb46b53d873fe88528ac727b67ea4c8b8fea14e03b6c54d394ce82208",
+    "salt": "62440034b55b5b6665bf72dda05bddcf"
+  },
+  "contact/contact.db": {
+    "enc_key": "39ae660e4f605eb34fac8ff2a66fb23b171c6b60f231b01e0f66668d310cfa42",
+    "salt": "fae9ef6c92ea13d7b0be1c87b4602b5c"
+  },
+  "head_image/head_image.db": {
+    "enc_key": "5500d1d30cdb54d9adee06cd8d7e387c720a02659b3e8be4e5214b530fbfc584",
+    "salt": "7c954388d887fbd6402b80671393e001"
+  },
+  "favorite/favorite_fts.db": {
+    "enc_key": "32de71d27714fc10fce7e347b151b3d133e42880ebce0327d7376a4f75316db7",
+    "salt": "ee0c6ea9e7c7c96e0e9f836879ee17f8"
+  },
+  "favorite/favorite.db": {
+    "enc_key": "a776d24b31f69c7d3bc507c975f920ae4f823c23371735107148060ced841a48",
+    "salt": "9f4d14169cbf6b26d0d21726c955b19e"
+  },
+  "sns/sns.db": {
+    "enc_key": "1a05e88fb06009f8c7e6f6a3fee4940e0a8b7af7e0542bead942cdb014f673cb",
+    "salt": "b3569345a623bb879ea2c9dc17f8c16d"
+  },
+  "third_app_icon/third_app_icon.db": {
+    "enc_key": "bafd1a0cded9446c68fcca60f7420dd816f43c7d9ab350e35058a96aae66b771",
+    "salt": "91904216f26ff9c80a788156507f26b3"
+  },
+  "general/general.db": {
+    "enc_key": "ae305819af459ae7ff153142991230b9717ac45e6745a64c9980c764abd9c992",
+    "salt": "659f0eba1f1a34c798dfdf7dc0aaeeff"
+  },
+  "solitaire/solitaire.db": {
+    "enc_key": "f04b2de2314fc3927eae7b8da08b8679cc3f5d9f16b92c0e97afcfb96811021e",
+    "salt": "45252752699b44f0885b41c69766872f"
+  }
+}

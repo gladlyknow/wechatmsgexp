@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang='zh-CN'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>长沙本地宝 - 聊天记录</title>
+<style>
+body{font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;background:#ededed;
+     margin:0;padding:0 0 40px;}
+header{position:sticky;top:0;background:#fff;border-bottom:1px solid #ddd;padding:12px 20px;
+       z-index:10;}
+header h1{font-size:17px;margin:0 0 4px;}
+header .meta{font-size:12px;color:#888;}
+.tools{margin-top:8px;}
+.tools input{padding:6px 10px;border:1px solid #ccc;border-radius:6px;width:260px;font-size:13px;}
+.tools button{padding:6px 12px;border:1px solid #ccc;background:#f7f7f7;border-radius:6px;
+              cursor:pointer;font-size:13px;}
+.tools button:hover{background:#eee;}
+main{padding:16px 20px;max-width:900px;margin:0 auto;}
+.msg{display:flex;margin:10px 0;gap:8px;}
+.msg .who{flex:0 0 44px;height:44px;border-radius:6px;background:#c9c9c9;color:#fff;
+          font-size:11px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.msg .who img{width:100%;height:100%;object-fit:cover;}
+.bub{background:#fff;border-radius:8px;padding:8px 12px;max-width:640px;font-size:14px;
+     line-height:1.55;white-space:pre-wrap;word-break:break-word;}
+.msg .name{font-size:11px;color:#999;margin-bottom:3px;}
+.msg .time{font-size:11px;color:#b0b0b0;margin-top:4px;}
+.msg.me{flex-direction:row-reverse;}
+.msg.me .bub{background:#95ec69;}
+.msg.me .name,.msg.me .time{text-align:right;}
+.sys{text-align:center;color:#999;font-size:12px;margin:12px 0;}
+.attimg{max-width:260px;max-height:260px;border-radius:6px;display:block;margin-top:4px;}
+.att{font-size:12px;color:#666;margin-top:4px;}
+.att a{color:#1a73e8;}
+.media-audio{display:block;width:min(360px,72vw);margin:4px 0;}
+.media-video{display:block;width:min(520px,76vw);max-height:68vh;border-radius:8px;background:#111;}
+.emoji{width:28px;height:28px;object-fit:contain;vertical-align:middle;margin:0 1px;}
+.linkcard{display:block;min-width:260px;max-width:520px;padding:10px 12px;border-radius:7px;
+          background:rgba(255,255,255,.72);color:#202124;text-decoration:none;border:1px solid #e3e5e7;}
+.linkcard:hover{border-color:#9aa0a6;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+.linktitle{font-weight:600;margin-bottom:3px;}.linkdesc,.linkhost{font-size:12px;color:#73777d;}
+.quote{margin:7px 0 0;padding:7px 9px;border-left:3px solid #aeb4ba;background:rgba(0,0,0,.05);
+       color:#61666d;font-size:12px;white-space:pre-wrap;}
+.quote b{display:block;color:#45494e;margin-bottom:2px;}
+.hidden{display:none;}
+</style></head><body>
+<header><h1>长沙本地宝</h1>
+<div class='meta'>gh_0484244289a0 · 共 1 条 · 导出 2026-10-16 16:59</div>
+<div class='tools'><input id='q' placeholder='搜索消息内容…' oninput='flt()'> <button onclick='flt()'>搜索</button> <button onclick='toggleTime()'>显示/隐藏时间</button> <span class='meta' id='cnt'></span></div></header><main>
+<div class='msg' data-t='[链接] http://mp.weixin.qq.com/s?__biz=mzixmzqyndm1nq==&amp;mid=2247833856&amp;idx=1&amp;sn=af57f98b9a99de628040429582ef29c8&amp;chksm=960bbb97c41965e605241b3cf2015417d2e6f986ae684c1b1f92bc0567e2353cdb61b2a1a52d&amp;scene=0&amp;xtrack=1#rd'><div class="who">长沙</div><div><div class='name'>长沙本地宝</div><div class='bub'><a class='linkcard' href='http://mp.weixin.qq.com/s?__biz=MzIxMzQyNDM1NQ==&amp;mid=2247833856&amp;idx=1&amp;sn=af57f98b9a99de628040429582ef29c8&amp;chksm=960bbb97c41965e605241b3cf2015417d2e6f986ae684c1b1f92bc0567e2353cdb61b2a1a52d&amp;scene=0&amp;xtrack=1#rd' target='_blank' rel='noopener noreferrer'><div class='linktitle'>社保缴费重大变化！新规11月1日起全面执行！</div><div class='linkdesc'>来看看</div><div class='linkhost'>mp.weixin.qq.com</div></a></div><div class='time'>2026-10-16 12:04:15</div></div></div>
+</main><script>
+function flt(){var q=document.getElementById('q').value.trim().toLowerCase();
+ var n=0;document.querySelectorAll('main .msg').forEach(function(e){
+  var hit=!q||e.dataset.t.toLowerCase().indexOf(q)>=0;
+  e.classList.toggle('hidden',!hit);if(hit)n++;});
+ document.getElementById('cnt').textContent='显示 '+n+' 条';}
+function toggleTime(){document.querySelectorAll('.time').forEach(function(e){
+  e.classList.toggle('hidden');});}
+</script></body></html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang='zh-CN'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>随心 - 聊天记录</title>
+<style>
+body{font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;background:#ededed;
+     margin:0;padding:0 0 40px;}
+header{position:sticky;top:0;background:#fff;border-bottom:1px solid #ddd;padding:12px 20px;
+       z-index:10;}
+header h1{font-size:17px;margin:0 0 4px;}
+header .meta{font-size:12px;color:#888;}
+.tools{margin-top:8px;}
+.tools input{padding:6px 10px;border:1px solid #ccc;border-radius:6px;width:260px;font-size:13px;}
+.tools button{padding:6px 12px;border:1px solid #ccc;background:#f7f7f7;border-radius:6px;
+              cursor:pointer;font-size:13px;}
+.tools button:hover{background:#eee;}
+main{padding:16px 20px;max-width:900px;margin:0 auto;}
+.msg{display:flex;margin:10px 0;gap:8px;}
+.msg .who{flex:0 0 44px;height:44px;border-radius:6px;background:#c9c9c9;color:#fff;
+          font-size:11px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.msg .who img{width:100%;height:100%;object-fit:cover;}
+.bub{background:#fff;border-radius:8px;padding:8px 12px;max-width:640px;font-size:14px;
+     line-height:1.55;white-space:pre-wrap;word-break:break-word;}
+.msg .name{font-size:11px;color:#999;margin-bottom:3px;}
+.msg .time{font-size:11px;color:#b0b0b0;margin-top:4px;}
+.msg.me{flex-direction:row-reverse;}
+.msg.me .bub{background:#95ec69;}
+.msg.me .name,.msg.me .time{text-align:right;}
+.sys{text-align:center;color:#999;font-size:12px;margin:12px 0;}
+.attimg{max-width:260px;max-height:260px;border-radius:6px;display:block;margin-top:4px;}
+.att{font-size:12px;color:#666;margin-top:4px;}
+.att a{color:#1a73e8;}
+.media-audio{display:block;width:min(360px,72vw);margin:4px 0;}
+.media-video{display:block;width:min(520px,76vw);max-height:68vh;border-radius:8px;background:#111;}
+.emoji{width:28px;height:28px;object-fit:contain;vertical-align:middle;margin:0 1px;}
+.linkcard{display:block;min-width:260px;max-width:520px;padding:10px 12px;border-radius:7px;
+          background:rgba(255,255,255,.72);color:#202124;text-decoration:none;border:1px solid #e3e5e7;}
+.linkcard:hover{border-color:#9aa0a6;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+.linktitle{font-weight:600;margin-bottom:3px;}.linkdesc,.linkhost{font-size:12px;color:#73777d;}
+.quote{margin:7px 0 0;padding:7px 9px;border-left:3px solid #aeb4ba;background:rgba(0,0,0,.05);
+       color:#61666d;font-size:12px;white-space:pre-wrap;}
+.quote b{display:block;color:#45494e;margin-bottom:2px;}
+.hidden{display:none;}
+</style></head><body>
+<header><h1>随心</h1>
+<div class='meta'>wxid_mzl7fmx9n5x821 · 共 9 条 · 导出 2026-10-16 16:11</div>
+<div class='tools'><input id='q' placeholder='搜索消息内容…' oninput='flt()'> <button onclick='flt()'>搜索</button> <button onclick='toggleTime()'>显示/隐藏时间</button> <span class='meta' id='cnt'></span></div></header><main>
+<div class='msg me' data-t='[语音2&quot;]'><div class="who">我</div><div><div class='name'>我</div><div class='bub'><audio class='media-audio' controls preload='metadata' src='随心/voice/voice_20261016_153047_6921862998692274925.mp3'><a href='随心/voice/voice_20261016_153047_6921862998692274925.mp3'>下载语音</a></audio></div><div class='time'>2026-10-16 15:30:47</div></div></div>
+<div class='msg me' data-t='老婆，发一段语音跟图片给我这个号'><div class="who">我</div><div><div class='name'>我</div><div class='bub'>老婆，发一段语音跟图片给我这个号</div><div class='time'>2026-10-16 15:31:55</div></div></div>
+<div class='msg' data-t='咋了'><div class="who">随心</div><div><div class='name'>随心</div><div class='bub'>咋了</div><div class='time'>2026-10-16 15:32:20</div></div></div>
+<div class='msg' data-t='[图片]'><div class="who">随心</div><div><div class='name'>随心</div><div class='bub'><a href='随心/image/img_20261016_153236_7a6d19cc.wxgf'><img class='attimg' loading='lazy' src='随心/image/img_20261016_153236_7a6d19cc_thumb.jpg'></a></div><div class='time'>2026-10-16 15:32:36</div></div></div>
+<div class='msg me' data-t='语音呢'><div class="who">我</div><div><div class='name'>我</div><div class='bub'>语音呢</div><div class='time'>2026-10-16 15:32:51</div></div></div>
+<div class='msg me' data-t='恩，还有视频，以及表情'><div class="who">我</div><div><div class='name'>我</div><div class='bub'>恩，还有视频，以及表情</div><div class='time'>2026-10-16 15:33:28</div></div></div>
+<div class='msg' data-t='[语音4&quot;]'><div class="who">随心</div><div><div class='name'>随心</div><div class='bub'><audio class='media-audio' controls preload='metadata' src='随心/voice/voice_20261016_154403_7844482580861777451.mp3'><a href='随心/voice/voice_20261016_154403_7844482580861777451.mp3'>下载语音</a></audio></div><div class='time'>2026-10-16 15:44:03</div></div></div>
+<div class='msg' data-t='[视频]'><div class="who">随心</div><div><div class='name'>随心</div><div class='bub'><video class='media-video' controls preload='metadata' poster='随心/video/eb78734ee420e6399e6136256967c173_thumb.jpg'><source src='随心/video/eb78734ee420e6399e6136256967c173.mp4' type='video/mp4'><a href='随心/video/eb78734ee420e6399e6136256967c173.mp4'>下载视频</a></video></div><div class='time'>2026-10-16 15:44:21</div></div></div>
+<div class='msg' data-t='[惊讶][惊讶][惊讶][惊讶]'><div class="who">随心</div><div><div class='name'>随心</div><div class='bub'><img class='emoji' loading='lazy' src='随心/emoji/emoji_惊讶.webp' alt='[惊讶]' title='[惊讶]'><img class='emoji' loading='lazy' src='随心/emoji/emoji_惊讶.webp' alt='[惊讶]' title='[惊讶]'><img class='emoji' loading='lazy' src='随心/emoji/emoji_惊讶.webp' alt='[惊讶]' title='[惊讶]'><img class='emoji' loading='lazy' src='随心/emoji/emoji_惊讶.webp' alt='[惊讶]' title='[惊讶]'></div><div class='time'>2026-10-16 15:44:28</div></div></div>
+</main><script>
+function flt(){var q=document.getElementById('q').value.trim().toLowerCase();
+ var n=0;document.querySelectorAll('main .msg').forEach(function(e){
+  var hit=!q||e.dataset.t.toLowerCase().indexOf(q)>=0;
+  e.classList.toggle('hidden',!hit);if(hit)n++;});
+ document.getElementById('cnt').textContent='显示 '+n+' 条';}
+function toggleTime(){document.querySelectorAll('.time').forEach(function(e){
+  e.classList.toggle('hidden');});}
+</script></body></html>

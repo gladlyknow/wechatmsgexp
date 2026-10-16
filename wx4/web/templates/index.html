@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <title>微信记忆库</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <aside class="rail" aria-label="账号与导航">
+      <div class="brand" title="微信记忆库"><span>忆</span></div>
+      <button class="rail-btn active" data-view="chat" title="聊天">聊</button>
+      <button class="rail-btn" data-view="overview" title="概览">览</button>
+      <button class="rail-btn" data-view="analytics" title="统计与年度报告">统</button>
+      <button class="rail-btn" data-view="directory" title="联系人与群聊">人</button>
+      <button class="rail-btn" data-view="media" title="媒体库">媒</button>
+      <button class="rail-btn" data-view="export" title="导出中心">出</button>
+      <button class="rail-btn" data-view="setup" title="初始化与数据健康">设</button>
+      <div class="rail-spacer"></div>
+      <button id="themeToggle" class="rail-btn" title="切换外观">昼</button>
+    </aside>
+
+    <section class="session-pane">
+      <header class="pane-head account-head">
+        <div>
+          <div class="eyebrow">本地档案</div>
+          <select id="accountSelect" aria-label="选择微信账号"></select>
+        </div>
+        <span id="syncState" class="status-dot" title="档案状态"></span>
+      </header>
+      <div class="search-wrap">
+        <span aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" autocomplete="off"
+               placeholder="搜聊天、联系人或消息" aria-label="全文搜索">
+        <kbd>Enter</kbd>
+      </div>
+      <div class="session-caption">
+        <span id="listTitle">最近会话</span>
+        <span id="sessionCount">0</span>
+      </div>
+      <div id="sessionList" class="session-list" role="list"></div>
+    </section>
+
+    <main class="conversation-pane">
+      <header class="conversation-head">
+        <button id="mobileBack" class="icon-btn mobile-only" aria-label="返回会话列表">←</button>
+        <div class="head-avatar" id="headAvatar">忆</div>
+        <div class="head-copy">
+          <h1 id="conversationTitle">选择一个会话</h1>
+          <p id="conversationMeta">聊天内容仅保留在本机</p>
+        </div>
+        <button id="detailToggle" class="icon-btn" aria-label="会话详情">•••</button>
+      </header>
+
+      <div id="filters" class="filter-bar" aria-label="消息类型筛选">
+        <button class="chip active" data-kind="">全部</button>
+        <button class="chip" data-kind="image">图片</button>
+        <button class="chip" data-kind="voice">语音</button>
+        <button class="chip" data-kind="video">视频</button>
+        <button class="chip" data-kind="link">链接</button>
+        <button class="chip" data-kind="file">文件</button>
+        <span class="filter-spacer"></span>
+        <select id="monthJump" class="date-control" aria-label="按月份筛选">
+          <option value="">全部月份</option>
+        </select>
+        <input id="dateJump" class="date-control" type="date" aria-label="跳转到日期">
+        <button id="clearDate" class="chip hidden" type="button">清除日期</button>
+      </div>
+
+      <section id="emptyState" class="empty-state">
+        <div class="empty-mark">忆</div>
+        <h2>你的记忆，都在这里</h2>
+        <p>从左侧选择会话，或搜索一个词。所有内容均由本地档案读取。</p>
+      </section>
+      <section id="messageViewport" class="message-viewport hidden" aria-live="polite">
+        <button id="loadEarlier" class="load-earlier hidden">加载更早消息</button>
+        <div id="messageList" class="message-list"></div>
+      </section>
+
+      <section id="overviewView" class="overview-view hidden">
+        <div class="overview-hero">
+          <div>
+            <div class="eyebrow">私有 · 离线 · 可追溯</div>
+            <h2>你的微信记忆库</h2>
+            <p id="overviewSpan">正在读取档案…</p>
+          </div>
+          <div class="privacy-pill"><span></span>仅本机可访问</div>
+        </div>
+        <div id="metricGrid" class="metric-grid"></div>
+        <div class="overview-grid">
+          <article class="panel-card">
+            <header><h3>消息组成</h3><span>按类型</span></header>
+            <div id="typeBars" class="type-bars"></div>
+          </article>
+          <article class="panel-card">
+            <header><h3>最近同步</h3><span id="runStatus">—</span></header>
+            <div id="runDetail" class="run-detail"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="analyticsView" class="workspace-view hidden">
+        <header class="workspace-head analytics-head">
+          <div><div class="eyebrow">年度记忆报告</div><h2 id="analyticsTitle">这一年的微信记忆</h2><p id="analyticsSpan">正在读取时间轴…</p></div>
+          <select id="analyticsYear" class="year-select" aria-label="选择统计年份"></select>
+        </header>
+        <div id="analyticsMetrics" class="metric-grid analytics-metrics"></div>
+        <article id="firstStory" class="story-card"></article>
+        <div class="analytics-grid">
+          <article class="report-card heatmap-card"><header><div><h3>聊天活跃日历</h3><p>颜色越深，当天消息越多</p></div><span id="heatmapLegend"></span></header><div class="heatmap-weekdays"><span>一</span><span>三</span><span>五</span><span>日</span></div><div id="calendarHeatmap" class="calendar-heatmap"></div></article>
+          <article class="report-card"><header><div><h3>每月消息</h3><p>一年的聊天节奏</p></div></header><div id="monthlyChart" class="horizontal-chart"></div></article>
+          <article class="report-card"><header><div><h3>24 小时分布</h3><p>你通常在什么时候聊天</p></div></header><div id="hourlyChart" class="hourly-chart"></div></article>
+          <article class="report-card direction-card"><header><div><h3>收发占比</h3><p>我发送与我收到</p></div></header><div class="direction-wrap"><div id="directionRing" class="direction-ring"><b id="directionPercent">0%</b><span>我发送</span></div><div id="typeLegend" class="type-legend"></div></div></article>
+          <article class="report-card"><header><div><h3>高频会话</h3><p>最常出现的人与群</p></div></header><div id="topSessions" class="rank-list"></div></article>
+          <article class="report-card"><header><div><h3>群聊活跃成员</h3><p>群消息中的高频发言者</p></div></header><div id="groupSenders" class="rank-list"></div></article>
+          <article class="report-card word-card"><header><div><h3>年度词语</h3><p>完全在本机生成</p></div></header><div id="wordCloud" class="word-cloud"></div></article>
+        </div>
+      </section>
+
+      <section id="directoryView" class="workspace-view hidden">
+        <header class="workspace-head">
+          <div><div class="eyebrow">通讯录</div><h2>联系人与群聊</h2><p>从归档中查看联系人，并直接回到相关会话。</p></div>
+          <div class="privacy-pill"><span></span><b id="directoryCount">0</b>&nbsp;项</div>
+        </header>
+        <div class="workspace-toolbar">
+          <div id="directoryTabs" class="segmented">
+            <button class="active" data-category="contacts">联系人</button>
+            <button data-category="groups">群聊</button>
+          </div>
+          <input id="directorySearch" class="workspace-search" type="search" placeholder="搜索名称或微信号" aria-label="搜索联系人">
+        </div>
+        <div id="directoryGrid" class="directory-grid"></div>
+        <button id="directoryMore" class="load-more hidden" type="button">加载更多</button>
+      </section>
+
+      <section id="mediaView" class="workspace-view hidden">
+        <header class="workspace-head">
+          <div><div class="eyebrow">媒体索引</div><h2>图片、语音与视频</h2><p>所有资源均来自本机档案，可以直接预览和播放。</p></div>
+          <div class="privacy-pill"><span></span><b id="mediaCount">0</b>&nbsp;项</div>
+        </header>
+        <div id="mediaTabs" class="workspace-toolbar media-tabs">
+          <button class="chip active" data-category="all">全部</button>
+          <button class="chip" data-category="image">图片</button>
+          <button class="chip" data-category="video">视频</button>
+          <button class="chip" data-category="voice">语音</button>
+          <button class="chip" data-category="emoji">表情</button>
+          <button class="chip" data-category="file">文件</button>
+        </div>
+        <div id="mediaGrid" class="media-grid"></div>
+        <button id="mediaMore" class="load-more hidden" type="button">加载更多</button>
+      </section>
+
+      <section id="exportView" class="workspace-view hidden">
+        <header class="workspace-head">
+          <div><div class="eyebrow">离线副本</div><h2>导出中心</h2><p>选择会话和格式，生成可独立保存的知识库文件。</p></div>
+        </header>
+        <div id="exportPanel" class="export-panel">
+          <form id="exportForm" class="export-form">
+            <label><span>会话</span><select id="exportSession" required></select></label>
+            <label><span>格式</span><select id="exportFormat">
+              <option value="html">HTML 网页（含媒体）</option>
+              <option value="md">Markdown（含媒体）</option>
+              <option value="json">JSON</option><option value="csv">CSV</option><option value="txt">TXT</option>
+              <option value="sqlite">SQLite 档案副本</option>
+              <option value="contacts_csv">联系人 CSV</option><option value="messages_csv">全量消息 CSV</option>
+            </select></label>
+            <button id="exportStart" type="submit">生成离线副本</button>
+            <p>导出包会复制已归档媒体，可在断网状态下直接查看图片、播放语音和视频。</p>
+          </form>
+          <section class="job-section"><header><h3>导出任务</h3><span>仅保留在本次运行中</span></header><div id="exportJobs" class="job-list"></div></section>
+        </div>
+      </section>
+
+      <section id="setupView" class="workspace-view hidden">
+        <header class="workspace-head">
+          <div><div class="eyebrow">首次运行</div><h2>建立你的本地档案</h2><p>逐步完成检测、受限取钥、安全快照、解密和索引。</p></div>
+          <div id="setupBadge" class="privacy-pill"><span></span>正在检测</div>
+        </header>
+        <div class="setup-layout">
+          <section class="setup-card">
+            <label class="setup-account"><span>选择微信账号</span><select id="setupAccount"></select></label>
+            <div id="setupSteps" class="setup-steps"></div>
+          </section>
+          <section class="setup-card setup-action">
+            <div id="setupActionCopy"></div>
+            <pre id="keyCommand" class="command-box hidden"></pre>
+            <button id="copyKeyCommand" class="secondary-button hidden" type="button">复制受限取钥命令</button>
+            <button id="setupRun" class="primary-button" type="button">继续初始化</button>
+            <p class="setup-note">取钥是唯一可能需要系统授权的步骤；解密、媒体还原和索引始终以当前桌面用户运行。</p>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <aside id="detailPane" class="detail-pane">
+      <header class="detail-head">
+        <span>会话资料</span>
+        <button id="detailClose" class="icon-btn" aria-label="关闭详情">×</button>
+      </header>
+      <div id="detailContent" class="detail-content">
+        <div class="detail-avatar">忆</div>
+        <h2>未选择会话</h2>
+        <p>选择会话后显示统计和群成员。</p>
+      </div>
+    </aside>
+  </div>
+
+  <dialog id="mediaDialog" class="media-dialog">
+    <button id="mediaClose" class="dialog-close" aria-label="关闭">×</button>
+    <img id="mediaPreview" alt="图片预览">
+  </dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>

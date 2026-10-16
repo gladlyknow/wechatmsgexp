@@ -1,0 +1,6 @@
+# Ubuntu CLI MVP only. The legacy Windows GUI dependencies remain in requirements.txt.
+pycryptodomex>=3.20,<4
+zstandard>=0.22,<1
+pilk==0.2.4
+Pillow>=10,<13
+Flask>=3,<4
